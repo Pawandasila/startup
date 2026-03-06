@@ -12,7 +12,6 @@ export function Editorial() {
         Editorial Curations
       </h2>
       <div className="grid grid-cols-1 md:grid-cols-4 gap-px bg-border-color">
-        {/* Main editorial feature */}
         <article className="group relative col-span-1 md:col-span-2 md:row-span-2 overflow-hidden bg-surface h-[400px] md:h-[800px]">
           <Image
             src="https://lh3.googleusercontent.com/aida-public/AB6AXuDI4uiJ7FxeihHXHQGWjigQAOMf6GEPhGY1fF7ClqQta4Nj2_Jufht0TqKenW8PH0P2p6Upztw2kK9-x_XfJ6CFCC4JMdQt_9aXwKhUDwc0FWaoTKuPEgH2DV4VljLyGWSMFKNdhDf22AvT3kTSyemUItRqVkEHNnsruj5ggt_45x122RGds-Slmf-wKROBraY-a1mKd_bbrxUK0yZol2C9C8x_4hTYFtacCxZNikBVKtyOj7gJVFvQ2wEESrdd2FfG1R98RkM7ZMeN"

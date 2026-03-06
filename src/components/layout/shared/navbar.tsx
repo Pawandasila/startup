@@ -77,7 +77,6 @@ export function Navbar() {
           <div className="bg-background-light/90 backdrop-blur-xl border-b border-border-color">
             <div className="max-w-[1440px] mx-auto px-12">
               <div className="flex h-16 items-center justify-between">
-                {/* Left: social icons */}
                 <div className="flex items-center gap-4 text-brand-primary">
                   <Link
                     href="#"
