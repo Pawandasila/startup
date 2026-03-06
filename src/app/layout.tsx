@@ -79,7 +79,7 @@ export default function RootLayout({
         className={`${newsreader.variable} ${inter.variable} font-sans antialiased mobile-view`}
         suppressHydrationWarning
       >
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+        <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
           <Navbar />
           {children}
           <Footer />
