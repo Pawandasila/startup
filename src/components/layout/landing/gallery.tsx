@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 const galleryImages = [
   {
@@ -43,9 +44,10 @@ export function Gallery() {
         </div>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-2 md:gap-4">
           {galleryImages.map((img, i) => (
-            <figure
+            <Link
               key={i}
-              className={`relative aspect-3/5 overflow-hidden grayscale hover:grayscale-0 transition-all duration-700 ${
+              href="/category/archive"
+              className={`relative aspect-3/5 overflow-hidden grayscale hover:grayscale-0 transition-all duration-700 block ${
                 img.stagger ? "md:mt-12" : ""
               }`}
             >
@@ -57,7 +59,7 @@ export function Gallery() {
                 className="object-cover transition-transform duration-700 hover:scale-105"
                 loading="lazy"
               />
-            </figure>
+            </Link>
           ))}
         </div>
       </div>

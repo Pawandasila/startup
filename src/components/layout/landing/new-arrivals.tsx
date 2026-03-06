@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 interface Product {
+  id: string;
   name: string;
   price: string;
   brand: string;
@@ -14,6 +15,7 @@ interface Product {
 
 const products: Product[] = [
   {
+    id: "loewe-silk-dress",
     name: "Silk Drape Dress",
     price: "$120/day",
     brand: "Loewe",
@@ -26,6 +28,7 @@ const products: Product[] = [
       "https://lh3.googleusercontent.com/aida-public/AB6AXuAONPieYOLIIyCEb1CI2UBxOcXSV__9oaY6tXrKoOrGA30rPK6xgRh-drfLiMyo8MNd70OJMzEwNEoRA93l6ffdVkkrydOqXbUID7Fi2WHylrqljHFd7gggYvmIwjVtEMMNywMvJIKzu4OVdvIBWFrtDyqoP1_tUw8WG5FBRY7U9vYysrxipEGf0FtAvvazPhlumA_GA3a6KJf_tULPe7WZ_GzHs_ZV0vp1YSYf0HmFVPwYTmMd9DdGsFydEDaWHDrUO6TChs4L9rxw",
   },
   {
+    id: "row-blazer",
     name: "Structured Blazer",
     price: "$85/day",
     brand: "The Row",
@@ -36,6 +39,7 @@ const products: Product[] = [
       "https://lh3.googleusercontent.com/aida-public/AB6AXuATONzS5IsDEkFqVqLbj2Xeptb5WnPJ7rTHVaDuXo0GFqt4TmerIZMOloxYnTgwmBhI7Z3PfvJre7PRYIWyb6Bz7Lor28ci32v36iqP2N1NsxtcKTHvqW2kRCmTO9l2XJnCfnrtHyr9NXIEvylou4D_BkipNTLeWlA-7n_bMV2eWtLrlhtLoTdA6xaRuzcEc0JhFbWYyKTFUzOF4nn4PvT0stwimGlZ7-rMVseSWx9SYNrdZQB8XivZBNfBM_q3NTSV_Z27ow295x-g",
   },
   {
+    id: "valentino-gown",
     name: "Crepe Evening Gown",
     price: "$195/day",
     brand: "Valentino",
@@ -48,6 +52,7 @@ const products: Product[] = [
       "https://lh3.googleusercontent.com/aida-public/AB6AXuBB6xzONwHCpUen7mjw_Zw52gWK6-W22rAgAbe2-Bbs5PCxwltbNhsDW87rzAerO5L8V04QOw5b9QoE1Itoore1xNVE9_dhxcvk5WqfEcn9rzeXsDcdCadgkN-xfg7lTXYGt0mGi0qRGiWQKb-r0YY1ZU8jqrHBZF5IzKKeZUZ0_UKz-jlk5P3zwjawyWVYrhOUZza1pC4fn0NaDM5CqJt2i96AgYiGoFQGGWssMOmGkM_dv4Vi_MqM0emvhRsG9hSIrFzCv2g8zsco",
   },
   {
+    id: "bottega-pouch",
     name: "Intrecciato Pouch",
     price: "$60/day",
     brand: "Bottega Veneta",
@@ -79,7 +84,7 @@ export function NewArrivals() {
         </div>
         <Link
           className="text-xs font-bold tracking-widest uppercase border-b border-brand-primary pb-1 shrink-0"
-          href="/collections/autumn"
+          href="/category/archive"
         >
           View Collection
         </Link>
@@ -90,8 +95,9 @@ export function NewArrivals() {
         aria-label="New arrival products"
       >
         {products.map((product) => (
-          <article
+          <Link
             key={product.name}
+            href={`/product/${product.id}`}
             className="group bg-background-light flex flex-col p-px"
             role="listitem"
           >
@@ -142,7 +148,7 @@ export function NewArrivals() {
                 {product.brand} • {product.size}
               </p>
             </div>
-          </article>
+          </Link>
         ))}
       </div>
     </section>

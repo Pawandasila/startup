@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export function Brands() {
   const brands = ["PRADA", "LOEWE", "KHAITE", "CELINE", "TOTEME", "THE ROW"];
 
@@ -16,9 +18,12 @@ export function Brands() {
         >
           {brands.map((brand) => (
             <li key={brand}>
-              <span className="font-serif text-lg md:text-2xl font-bold tracking-tighter cursor-default">
+              <Link
+                href={`/category/${brand.toLowerCase().replace(/\s+/g, "-")}`}
+                className="font-serif text-lg md:text-2xl font-bold tracking-tighter hover:text-brand-accent transition-colors"
+              >
                 {brand}
-              </span>
+              </Link>
             </li>
           ))}
         </ul>

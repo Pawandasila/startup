@@ -44,7 +44,10 @@ export function Editorial() {
         </article>
 
         {/* Influencer wardrobes */}
-        <article className="group relative col-span-1 md:col-span-2 overflow-hidden bg-background-light h-[250px] md:h-[400px]">
+        <Link
+          href="/category/archive"
+          className="group relative col-span-1 md:col-span-2 overflow-hidden bg-background-light h-[250px] md:h-[400px]"
+        >
           <Image
             src="https://lh3.googleusercontent.com/aida-public/AB6AXuBYygLWn1ZR-77rWvGurNHziXARPQZ_WfYpwKsl3CmMjm3onCmsNzzqDghEfT1G0kcvwVEDZLnUy_8ORdvCeu-XbKBdhmT3aNzZqcOrEzSTdrindJMU-XOaTLooRYY63nYxcKWCx4OX3T523W27jDs9Z4CKxQhmEwlzN1DSGEhOH1sQrXUBFmML3ZStADN4DLB2FtedehxkyekNAf8CT3GpiWMkW0lAQD-7IIc7AFszoTKAjtKfk6F30qjbqtnamL1Q07EXL3qdqZbl"
             alt="Influencer curated wardrobe collections"
@@ -61,10 +64,13 @@ export function Editorial() {
               Explore Curated Closets
             </p>
           </div>
-        </article>
+        </Link>
 
         {/* Spotlight feature */}
-        <article className="group relative col-span-1 md:col-span-1 overflow-hidden bg-surface h-[250px] md:h-[400px]">
+        <Link
+          href="/category/archive"
+          className="group relative col-span-1 md:col-span-1 overflow-hidden bg-surface h-[250px] md:h-[400px]"
+        >
           <Image
             src="https://lh3.googleusercontent.com/aida-public/AB6AXuDFYZRjP1yGiBlbm__KqGPDGsJIZ1H2dh-9efcPV1v99zrTlY5pmx-Op9ABnR_E0ENKn1JIPygDU58JJ0dM0EkAcwFUJw8tXgngwQdPyY9eICpUaNSiAk8P1UIBpANIFjoUtuTLW58wU_19SqGOh5DnzG4xjAyEeaaU7bd1xoaA6b5o6inI0_fiZKDFimq-vzvhb-S69hSmFDp7GJ-pe9KZ7Nwsmcq_WwneOgstdpJsEnRumq6etm4YMEEe5dAbeCwxw12BkAPnJqcO"
             alt="Spotlight on masterwork designer pieces"
@@ -84,7 +90,7 @@ export function Editorial() {
               The Masterworks
             </h3>
           </div>
-        </article>
+        </Link>
 
         {/* Designer index */}
         <div className="col-span-1 md:col-span-1 bg-background-light p-6 md:p-10 flex flex-col justify-between h-auto md:h-[400px]">
