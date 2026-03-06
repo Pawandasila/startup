@@ -36,7 +36,7 @@ export function Editorial() {
             </h3>
             <Link
               className="inline-flex items-center gap-2 text-white border-b border-white/40 pb-1 text-xs font-bold tracking-widest hover:text-brand-accent hover:border-brand-accent transition-colors uppercase"
-              href="/collections/gala-edit"
+              href="/category/archive"
             >
               Shop the edit
             </Link>
@@ -106,7 +106,7 @@ export function Editorial() {
                 <li key={designer}>
                   <Link
                     className="text-xs font-bold tracking-widest uppercase hover:text-brand-accent transition-colors block"
-                    href={`/designers/${designer.toLowerCase().replace(/\s+/g, "-")}`}
+                    href={`/category/${designer.toLowerCase().replace(/\s+/g, "-")}`}
                   >
                     {designer}
                   </Link>
@@ -117,7 +117,7 @@ export function Editorial() {
           <div className="pt-6 mt-6 border-t border-border-color">
             <Link
               className="text-xs font-bold tracking-widest uppercase inline-flex items-center gap-2 group"
-              href="/designers"
+              href="/category"
             >
               View All Brands
               <ArrowRight
