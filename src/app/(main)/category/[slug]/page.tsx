@@ -459,7 +459,6 @@ export default function CategoryPage({
           </nav>
         </main>
       </div>
-      <Footer />
     </>
   );
 }

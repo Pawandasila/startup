@@ -30,7 +30,7 @@ const steps = [
 export function Features() {
   return (
     <section
-      className="py-12 md:py-24 border-b border-border-color bg-background-light"
+      className="py-12 md:py-15 border-b border-border-color bg-background-light"
       aria-labelledby="features-heading"
     >
       <h2 id="features-heading" className="sr-only">

@@ -211,7 +211,6 @@ export default function JournalPage() {
           </div>
         </section>
       </main>
-      <Footer />
     </>
   );
 }

@@ -10,9 +10,16 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { useActivity } from "@/context/activity.context";
 
 export function ThemeToggle() {
-  const { setTheme } = useTheme();
+  const { setTheme: setNextTheme } = useTheme();
+  const { setTheme: setActivityTheme } = useActivity();
+
+  const handleThemeChange = (theme: "light" | "dark" | "system") => {
+    setNextTheme(theme);
+    setActivityTheme(theme);
+  };
 
   return (
     <DropdownMenu>
@@ -32,19 +39,19 @@ export function ThemeToggle() {
         className="bg-background-light border-border-color"
       >
         <DropdownMenuItem
-          onClick={() => setTheme("light")}
+          onClick={() => handleThemeChange("light")}
           className="text-xs font-bold tracking-widest uppercase cursor-pointer hover:bg-surface"
         >
           Light
         </DropdownMenuItem>
         <DropdownMenuItem
-          onClick={() => setTheme("dark")}
+          onClick={() => handleThemeChange("dark")}
           className="text-xs font-bold tracking-widest uppercase cursor-pointer hover:bg-surface"
         >
           Dark
         </DropdownMenuItem>
         <DropdownMenuItem
-          onClick={() => setTheme("system")}
+          onClick={() => handleThemeChange("system")}
           className="text-xs font-bold tracking-widest uppercase cursor-pointer hover:bg-surface"
         >
           System

@@ -5,6 +5,9 @@ import { Menu, X, Search, ShoppingBag, Triangle } from "lucide-react";
 import Link from "next/link";
 import { ThemeToggle } from "./theme-toggle";
 import { CartDrawer } from "./cart-drawer";
+import { useAuth } from "@/context/auth.context";
+import { ProfileButton } from "@/module/user/component/profile-button";
+import { UserCircle } from "lucide-react";
 
 const navLinks = [
   { label: "The Archive", href: "/category/archive" },
@@ -18,6 +21,7 @@ const navLinks = [
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [isCartOpen, setIsCartOpen] = useState(false);
+  const { user } = useAuth();
   const closeMenu = useCallback(() => setIsOpen(false), []);
   const openMenu = useCallback(() => setIsOpen(true), []);
   const openCart = useCallback(() => setIsCartOpen(true), []);
@@ -163,12 +167,25 @@ export function Navbar() {
                       0
                     </span>
                   </button>
+
+                  <div className="h-4 w-px bg-slate-200 dark:bg-slate-800 mx-2 hidden lg:block" />
+
+                  {user ? (
+                    <ProfileButton />
+                  ) : (
+                    <Link
+                      href="/login"
+                      className="hidden lg:flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.2em] text-slate-900 dark:text-slate-100 hover:text-primary transition-colors h-10 px-4 group"
+                    >
+                      <UserCircle className="w-4 h-4 text-slate-400 group-hover:text-primary transition-colors" />
+                      Sign In
+                    </Link>
+                  )}
                 </div>
               </div>
             </div>
           </div>
 
-          {/* Bottom row: nav links */}
           <nav
             className="bg-background-light/80 backdrop-blur-xl border-b border-border-color"
             aria-label="Main navigation"
@@ -200,7 +217,6 @@ export function Navbar() {
         </div>
       </header>
 
-      {/* ─── Mobile slide-out drawer ─── */}
       <div
         className={`fixed inset-0 z-60 bg-black/60 backdrop-blur-sm transition-opacity duration-300 md:hidden ${
           isOpen
@@ -274,14 +290,20 @@ export function Navbar() {
             </div>
           </div>
 
-          <div className="p-6 border-t border-border-color">
-            <Link
-              href="/login"
-              onClick={closeMenu}
-              className="block w-full text-center bg-brand-primary text-background py-3 text-xs font-bold uppercase tracking-[0.2em] hover:bg-brand-accent transition-colors rounded-lg"
-            >
-              Log In
-            </Link>
+          <div className="p-6 border-t border-border-color bg-slate-50/50 dark:bg-slate-900/20">
+            {user ? (
+              <div className="flex justify-center">
+                <ProfileButton />
+              </div>
+            ) : (
+              <Link
+                href="/login"
+                onClick={closeMenu}
+                className="block w-full text-center bg-brand-primary text-background py-4 text-[10px] font-bold uppercase tracking-[0.3em] hover:bg-brand-accent transition-all duration-300 rounded-none"
+              >
+                Log In
+              </Link>
+            )}
           </div>
         </div>
       </aside>

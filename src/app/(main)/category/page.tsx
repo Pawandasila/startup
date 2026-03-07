@@ -94,7 +94,6 @@ export default function CategoryIndexPage() {
           </div>
         </section>
       </main>
-      <Footer />
     </>
   );
 }

@@ -2,8 +2,11 @@ import type { Metadata, Viewport } from "next";
 import { Newsreader, Inter } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
-import { Navbar } from "@/components/layout/shared/navbar";
-import { Footer } from "@/components/layout/shared/footer";
+import { ActivityProvider } from "@/context/activity.context";
+import { AuthProvider } from "@/context/auth.context";
+import { LocationPopup } from "@/components/layout/shared/location-popup";
+import QueryProvider from "@/components/providers/query-provider";
+import { Toaster } from "sonner";
 
 const newsreader = Newsreader({
   subsets: ["latin"],
@@ -79,11 +82,21 @@ export default function RootLayout({
         className={`${newsreader.variable} ${inter.variable} font-sans antialiased mobile-view`}
         suppressHydrationWarning
       >
-        <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
-          <Navbar />
-          {children}
-          <Footer />
-        </ThemeProvider>
+        <QueryProvider>
+          <AuthProvider>
+            <ActivityProvider>
+              <ThemeProvider
+                attribute="class"
+                defaultTheme="light"
+                enableSystem
+              >
+                <LocationPopup />
+                <Toaster richColors position="top-right" />
+                {children}
+              </ThemeProvider>
+            </ActivityProvider>
+          </AuthProvider>
+        </QueryProvider>
       </body>
     </html>
   );

@@ -20,6 +20,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import { ReviewsSection } from "@/components/layout/product/reviews-section";
 
 export default function ProductPage({
   params,
@@ -174,12 +175,15 @@ export default function ProductPage({
                     <Star className="w-4 h-4 fill-brand-accent text-brand-accent" />
                     <Star className="w-4 h-4 fill-brand-accent text-brand-accent" />
                   </div>
-                  <span className="text-sm font-sans text-text-main/70 underline underline-offset-4 cursor-pointer hover:text-brand-primary">
+                  <a
+                    href="#reviews"
+                    className="text-sm font-sans text-text-main/70 underline underline-offset-4 cursor-pointer hover:text-brand-primary"
+                  >
                     <span className="sr-only">Rated </span>
                     {product.rating}
                     <span className="sr-only"> out of 5 stars based on </span>
                     {product.reviews} Reviews
-                  </span>
+                  </a>
                 </div>
               </div>
 
@@ -313,10 +317,12 @@ export default function ProductPage({
           </div>
         </section>
 
+        {/* Product Reviews */}
+        <ReviewsSection productId={id as string} productName={product.name} />
+
         {/* You May Also Like */}
         <RecommendedCarousel />
       </main>
-      <Footer />
     </>
   );
 }
