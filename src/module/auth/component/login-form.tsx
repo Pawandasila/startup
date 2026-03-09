@@ -19,6 +19,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { useLogin } from "../hooks/use-login";
 import { VerificationDialog } from "./verification-dialog";
+import { ForgotPasswordDialog } from "./forgot-password-dialog";
 import { AxiosError } from "axios";
 import { ApiError } from "../types";
 
@@ -31,6 +32,7 @@ type LoginFormValues = z.infer<typeof loginSchema>;
 
 export const LoginForm = () => {
   const [showVerifyDialog, setShowVerifyDialog] = useState(false);
+  const [showForgotDialog, setShowForgotDialog] = useState(false);
   const { mutate: login, isPending } = useLogin();
 
   const form = useForm<LoginFormValues>({
@@ -87,12 +89,13 @@ export const LoginForm = () => {
                   <FormLabel className="text-[11px] font-bold uppercase tracking-widest text-slate-500 dark:text-slate-400">
                     Password
                   </FormLabel>
-                  <Link
-                    href="/forgot-password"
+                  <button
+                    type="button"
+                    onClick={() => setShowForgotDialog(true)}
                     className="text-[10px] font-bold uppercase tracking-widest text-primary hover:opacity-80 transition-opacity"
                   >
                     Forgot Password?
-                  </Link>
+                  </button>
                 </div>
                 <FormControl>
                   <Input
@@ -164,6 +167,12 @@ export const LoginForm = () => {
         open={showVerifyDialog}
         onOpenChange={setShowVerifyDialog}
         email={form.getValues("email")}
+      />
+
+      <ForgotPasswordDialog
+        open={showForgotDialog}
+        onOpenChange={setShowForgotDialog}
+        initialEmail={form.getValues("email")}
       />
     </>
   );

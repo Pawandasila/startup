@@ -26,9 +26,9 @@ export function CartDrawer({ open, onOpenChange }: CartDrawerProps) {
 
   const content = (
     <div className="flex flex-col h-full bg-[#FFFEFA]">
-      <header className="flex flex-col px-6 md:px-10 pt-8 md:pt-10 pb-6 border-b border-[#E5E5E5]">
+      <header className="flex flex-col px-6 md:px-8 pt-6 md:pt-8 pb-5 border-b border-[#E5E5E5]">
         <div className="flex items-center justify-between mb-2">
-          <h2 className="font-serif text-2xl md:text-3xl font-medium tracking-tight text-brand-primary">
+          <h2 className="font-serif text-xl md:text-2xl font-medium tracking-tight text-brand-primary">
             Your Selection
           </h2>
           {!isDesktop && (
@@ -52,20 +52,20 @@ export function CartDrawer({ open, onOpenChange }: CartDrawerProps) {
       </header>
 
       {/* Estimated Delivery */}
-      <div className="px-6 md:px-10 py-4 border-b border-[#E5E5E5] bg-surface flex items-center gap-4">
-        <Calendar className="w-5 h-5 text-brand-primary" strokeWidth={1.5} />
-        <div className="flex flex-col text-sm text-brand-primary">
+      <div className="px-6 md:px-8 py-3 border-b border-[#E5E5E5] bg-surface flex items-center gap-4">
+        <Calendar className="w-4 h-4 text-brand-primary" strokeWidth={1.5} />
+        <div className="flex flex-col text-xs text-brand-primary">
           <span className="font-medium">Est. Delivery: Oct 10</span>
-          <span className="text-text-muted text-xs">Return by: Oct 16</span>
+          <span className="text-text-muted">Return by: Oct 16</span>
         </div>
       </div>
 
       {/* Cart Items */}
-      <div className="flex-1 overflow-y-auto px-6 md:px-10 py-8 no-scrollbar">
-        <div className="flex flex-col gap-10">
+      <div className="flex-1 overflow-y-auto px-6 md:px-8 py-6 no-scrollbar">
+        <div className="flex flex-col gap-8">
           {/* Item 1 */}
-          <div className="group flex gap-6 relative">
-            <div className="w-[100px] h-[140px] shrink-0 bg-surface overflow-hidden relative">
+          <div className="group flex gap-4 relative">
+            <div className="w-[65px] h-[90px] shrink-0 bg-surface overflow-hidden relative border border-[#E5E5E5]">
               <Image
                 src="https://lh3.googleusercontent.com/aida-public/AB6AXuBOdrF9KW4pVsuLHjNc9WsPiQKW3rFyw5cQ2bO5bK2arDIxVhzveamRFNDW1ACUN_zfBAp5TDpj0tC43kgbN28dxHlL52iSeRQdab1vb3M7kXjHs6EWdQ5x2mcnxiv3H3MnbYMt17kjbT-AA69MI76H7AyYbAZzAr9mkDHvsjfkQ_ES_jsurif0zhx9hKGRNtiQo3JzvGDK3JtWa_Z4pyPm-rqCyj_tplRrjpClPEUu7WcdTDlER9dWkAynS5XUDg6qg_AwpUq4y6OL"
                 alt="Asymmetric Silk Dress"
@@ -76,30 +76,30 @@ export function CartDrawer({ open, onOpenChange }: CartDrawerProps) {
             <div className="flex-1 flex flex-col justify-between py-1">
               <div>
                 <div className="flex justify-between items-start mb-1">
-                  <span className="text-xs font-bold tracking-[0.05em] uppercase text-brand-primary">
+                  <span className="text-[10px] font-bold tracking-[0.05em] uppercase text-brand-primary/60">
                     Loewe
                   </span>
-                  <span className="font-sans text-sm text-brand-primary tabular-nums">
+                  <span className="font-sans text-xs text-brand-primary tabular-nums font-medium">
                     $120.00
                   </span>
                 </div>
-                <h3 className="font-serif text-xl leading-tight text-brand-primary mb-3">
+                <h3 className="font-serif text-sm leading-tight text-brand-primary mb-2">
                   Asymmetric Silk Dress
                 </h3>
-                <div className="space-y-1">
-                  <div className="flex items-center gap-2 text-sm text-brand-primary/80">
+                <div className="space-y-0.5">
+                  <div className="flex items-center gap-2 text-[11px] text-brand-primary/70">
                     <Calendar
-                      className="w-4 h-4 text-text-muted"
+                      className="w-3 h-3 text-text-muted"
                       strokeWidth={1.5}
                     />
                     <span>
                       Oct 10 — Oct 16{" "}
-                      <span className="text-text-muted ml-1">(6 Days)</span>
+                      <span className="text-text-muted ml-0.5">(6 Days)</span>
                     </span>
                   </div>
-                  <div className="flex items-center gap-2 text-sm text-brand-primary/80">
+                  <div className="flex items-center gap-2 text-[11px] text-brand-primary/70">
                     <ShoppingBag
-                      className="w-4 h-4 text-text-muted"
+                      className="w-3 h-3 text-text-muted"
                       strokeWidth={1.5}
                     />
                     <span>Size: M</span>
@@ -107,14 +107,14 @@ export function CartDrawer({ open, onOpenChange }: CartDrawerProps) {
                 </div>
               </div>
               <div className="flex items-center justify-between mt-4">
-                <button className="text-[10px] uppercase tracking-widest text-text-muted hover:text-brand-primary transition-colors duration-300 border-b border-transparent hover:border-brand-primary">
+                <button className="text-[9px] cursor-pointer uppercase tracking-widest text-text-muted hover:text-brand-primary transition-colors duration-300 border-b border-transparent hover:border-brand-primary">
                   Edit Dates
                 </button>
                 <div className="flex gap-4">
-                  <button className="text-[10px] uppercase tracking-widest text-brand-primary border-b border-brand-primary hover:text-text-muted hover:border-text-muted transition-all duration-300 pb-0.5">
+                  <button className="text-[9px] cursor-pointer uppercase tracking-widest text-brand-primary border-b border-brand-primary hover:text-text-muted hover:border-text-muted transition-all duration-300 pb-0.5">
                     Save
                   </button>
-                  <button className="text-[10px] uppercase tracking-widest text-brand-primary border-b border-brand-primary hover:text-red-600 hover:border-red-600 transition-all duration-300 pb-0.5">
+                  <button className="text-[9px] cursor-pointer uppercase tracking-widest text-brand-primary border-b border-brand-primary hover:text-red-600 hover:border-red-600 transition-all duration-300 pb-0.5">
                     Remove
                   </button>
                 </div>
@@ -125,8 +125,8 @@ export function CartDrawer({ open, onOpenChange }: CartDrawerProps) {
           <div className="h-px bg-[#E5E5E5] w-full"></div>
 
           {/* Item 2 */}
-          <div className="group flex gap-6 relative">
-            <div className="w-[100px] h-[140px] shrink-0 bg-surface overflow-hidden relative">
+          <div className="group flex gap-4 relative">
+            <div className="w-[65px] h-[90px] shrink-0 bg-surface overflow-hidden relative border border-[#E5E5E5]">
               <Image
                 src="https://lh3.googleusercontent.com/aida-public/AB6AXuBQrSloR490m2hI5yTdITgTMhcOzphZmTfNg6T8Dy4FhqUQngMJUirYfjuwSTwx99te_3eT91Y_T2exHGQp92yFkYNInUs4iK_jHCGvlxq9n0_txKdxtrAr9X-w9Atv-pyj4BJkROGjUHuO_Yy8S3gn011HnqiLuBdLz4SkPOP_jhlxh0I3H2Hhm__4qoK4bOYho4VsYPbTF1c-mq6j_XGapGmatifcqEzLPQqRnQ96B7wpvcNC4YNbIqAkC4OKHDBDY20vWTi0774s"
                 alt="Mini Jodie"
@@ -137,30 +137,30 @@ export function CartDrawer({ open, onOpenChange }: CartDrawerProps) {
             <div className="flex-1 flex flex-col justify-between py-1">
               <div>
                 <div className="flex justify-between items-start mb-1">
-                  <span className="text-xs font-bold tracking-[0.05em] uppercase text-brand-primary">
+                  <span className="text-[10px] font-bold tracking-[0.05em] uppercase text-brand-primary/60">
                     Bottega Veneta
                   </span>
-                  <span className="font-sans text-sm text-brand-primary tabular-nums">
+                  <span className="font-sans text-xs text-brand-primary tabular-nums font-medium">
                     $85.00
                   </span>
                 </div>
-                <h3 className="font-serif text-xl leading-tight text-brand-primary mb-3">
+                <h3 className="font-serif text-sm leading-tight text-brand-primary mb-2">
                   Mini Jodie
                 </h3>
-                <div className="space-y-1">
-                  <div className="flex items-center gap-2 text-sm text-brand-primary/80">
+                <div className="space-y-0.5">
+                  <div className="flex items-center gap-2 text-[11px] text-brand-primary/70">
                     <Calendar
-                      className="w-4 h-4 text-text-muted"
+                      className="w-3 h-3 text-text-muted"
                       strokeWidth={1.5}
                     />
                     <span>
                       Oct 10 — Oct 16{" "}
-                      <span className="text-text-muted ml-1">(6 Days)</span>
+                      <span className="text-text-muted ml-0.5">(6 Days)</span>
                     </span>
                   </div>
-                  <div className="flex items-center gap-2 text-sm text-brand-primary/80">
+                  <div className="flex items-center gap-2 text-[11px] text-brand-primary/70">
                     <ShoppingBag
-                      className="w-4 h-4 text-text-muted"
+                      className="w-3 h-3 text-text-muted"
                       strokeWidth={1.5}
                     />
                     <span>One Size</span>
@@ -258,16 +258,16 @@ export function CartDrawer({ open, onOpenChange }: CartDrawerProps) {
         </div>
       </div>
 
-      <div className="bg-[#F9F8F6] border-t border-[#E5E5E5] px-4 md:px-6 py-4">
+      <div className="bg-[#F9F8F6] border-t border-[#E5E5E5] px-6 py-5">
         <div className="mb-6">
           <div className="flex justify-between items-baseline">
-            <span className="font-serif text-xl text-brand-primary">Total</span>
-            <span className="font-serif text-3xl md:text-4xl text-brand-primary font-medium tabular-nums">
+            <span className="font-serif text-lg text-brand-primary">Total</span>
+            <span className="font-serif text-2xl md:text-2xl text-brand-primary font-medium tabular-nums">
               $225.00
             </span>
           </div>
         </div>
-        <button className="w-full bg-brand-primary hover:bg-black text-white h-14 flex items-center justify-between px-6 mb-4 transition-all duration-300 group shadow-sm uppercase text-xs font-bold tracking-widest">
+        <button className="w-full bg-brand-primary hover:bg-black text-white h-12 flex items-center justify-between px-6 mb-4 transition-all duration-300 group shadow-sm uppercase text-xs font-bold tracking-widest">
           <span>Proceed to Payment</span>
           <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
         </button>
@@ -278,7 +278,7 @@ export function CartDrawer({ open, onOpenChange }: CartDrawerProps) {
   if (isDesktop) {
     return (
       <Sheet open={open} onOpenChange={onOpenChange}>
-        <SheetContent className="p-0 sm:max-w-[600px] border-l border-[#E5E5E5]">
+        <SheetContent className="p-0 sm:max-w-[480px] border-l border-[#E5E5E5]">
           <SheetHeader className="sr-only">
             <SheetTitle>Shopping Cart</SheetTitle>
           </SheetHeader>

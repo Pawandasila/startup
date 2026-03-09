@@ -1,9 +1,25 @@
-import React from "react";
+"use client";
+
+import React, { useEffect } from "react";
 import Link from "next/link";
 import { LoginForm } from "@/module/auth/component/login-form";
 import { Sparkles } from "lucide-react";
+import { useAuth } from "@/context/auth.context";
+import { useRouter } from "next/navigation";
 
 const LoginPage = () => {
+  const { user, isLoading } = useAuth();
+  const router = useRouter();
+
+  useEffect(() => {
+    if (!isLoading && user) {
+      router.push("/");
+    }
+  }, [user, isLoading, router]);
+
+  if (isLoading) return null;
+  if (user) return null;
+
   return (
     <div className="flex flex-col lg:flex-row min-h-screen w-full font-sans antialiased bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 overflow-x-hidden">
       {/* Left Side: Artistic Fashion Editorial Image */}

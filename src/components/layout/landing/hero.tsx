@@ -36,14 +36,14 @@ export function Hero() {
           className="object-cover opacity-90"
         />
       </div>
-      <div className="relative z-20 flex h-full flex-col items-center justify-center px-4 sm:px-8 text-center">
+      <div className="relative z-20 flex h-full flex-col items-center justify-center px-4 sm:px-8 text-center mb-3">
         <h1 className="font-serif text-4xl sm:text-6xl md:text-8xl lg:text-display text-white font-semibold leading-tight tracking-tight mb-6 md:mb-8">
           Rent Fashion.
           <br />
           <span className="italic font-light">The New Standard.</span>
         </h1>
         <Link
-          className="group relative flex h-12 md:h-14 items-center justify-center border border-white/40 bg-white/5 px-8 md:px-12 backdrop-blur-sm transition-all hover:bg-white hover:text-black"
+          className="group relative flex h-12 mb-10 md:h-14 items-center justify-center rounded-full border border-white/40 bg-white/5 px-8 md:px-12 backdrop-blur-sm transition-all hover:bg-white hover:text-black"
           href="/category/archive"
         >
           <span className="font-sans text-xs font-bold tracking-[0.2em] text-white group-hover:text-black transition-colors">
@@ -52,13 +52,13 @@ export function Hero() {
         </Link>
       </div>
       <div className="absolute bottom-6 md:bottom-12 left-0 right-0 z-30 px-4">
-        <div className="mx-auto max-w-4xl bg-white/10 p-1 backdrop-blur-xl border border-white/20 rounded-lg">
+        <div className="mx-auto max-w-4xl bg-white/10 p-1 backdrop-blur-xl border border-white/20 rounded-full">
           <form
             className="flex flex-col md:flex-row divide-y md:divide-y-0 md:divide-x divide-white/20"
             role="search"
             aria-label="Search for rental fashion"
           >
-            <div className="flex-1 px-4 md:px-6 py-3 md:py-4">
+            <div className="flex-1 px-4 md:px-6 py-3 md:py-4 rounded-full">
               <label
                 htmlFor="hero-occasion"
                 className="block text-[9px] font-bold uppercase tracking-widest text-white/50 mb-1"
@@ -73,7 +73,7 @@ export function Hero() {
                 autoComplete="off"
               />
             </div>
-            <div className="flex-1 px-4 md:px-6 py-3 md:py-4">
+            <div className="flex-1 px-4 md:px-6 py-3 md:py-4 rounded-full">
               <label className="block text-[9px] font-bold uppercase tracking-widest text-white/50 mb-1">
                 Date Range
               </label>
@@ -121,7 +121,7 @@ export function Hero() {
             </div>
             <button
               type="submit"
-              className="bg-white text-black px-8 md:px-10 py-3 md:py-0 font-bold uppercase tracking-widest text-xs hover:bg-brand-accent transition-colors w-full md:w-auto"
+              className="bg-white text-black rounded-full px-8 md:px-10 py-3 md:py-0 font-bold uppercase tracking-widest text-xs hover:bg-brand-accent transition-colors w-full md:w-auto"
             >
               Search
             </button>

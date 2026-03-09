@@ -23,8 +23,20 @@ import { useAuth } from "@/context/auth.context";
 import { Button } from "@/components/ui/button";
 
 export const ProfileButton = () => {
-  const { user, clearAuth } = useAuth();
+  const { user, clearAuth, isLoading } = useAuth();
   const router = useRouter();
+
+  if (isLoading) {
+    return (
+      <div className="h-12 w-[160px] flex items-center gap-3 px-3 animate-pulse">
+        <div className="h-9 w-9 bg-slate-200 dark:bg-slate-800 rounded-none shrink-0" />
+        <div className="hidden md:flex flex-col gap-1.5 flex-1">
+          <div className="h-2 w-20 bg-slate-200 dark:bg-slate-800 rounded-none" />
+          <div className="h-2 w-24 bg-slate-100 dark:bg-slate-900 rounded-none" />
+        </div>
+      </div>
+    );
+  }
 
   if (!user) return null;
 

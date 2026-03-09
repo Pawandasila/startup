@@ -1,10 +1,26 @@
-import React from "react";
+"use client";
+
+import React, { useEffect } from "react";
 import Link from "next/link";
 import { RegisterForm } from "@/module/auth/component/register-form";
 import { Sparkles, Circle } from "lucide-react";
 import Image from "next/image";
+import { useAuth } from "@/context/auth.context";
+import { useRouter } from "next/navigation";
 
 export default function Signup() {
+  const { user, isLoading } = useAuth();
+  const router = useRouter();
+
+  useEffect(() => {
+    if (!isLoading && user) {
+      router.push("/");
+    }
+  }, [user, isLoading, router]);
+
+  if (isLoading) return null;
+  if (user) return null;
+
   return (
     <div className="flex h-screen w-full font-serif text-slate-900 dark:text-slate-100 antialiased overflow-hidden bg-background-light dark:bg-background-dark">
       <div className="flex h-full w-full">

@@ -13,3 +13,42 @@ export interface User {
   createdAt: string;
   updatedAt: string;
 }
+
+export interface Address {
+  id: string;
+  userId: string;
+  street: string;
+  city: string;
+  state: string;
+  country: string;
+  zipCode: string;
+  isDefault: boolean;
+  createdAt: string;
+  updatedAt: string;
+}
+
+export interface UpdateProfileRequest {
+  firstName?: string;
+  lastName?: string;
+  phoneNumber?: string;
+  profileImageUrl?: string;
+}
+
+export interface ChangePasswordRequest {
+  oldPassword?: string;
+  newPassword?: string;
+}
+
+export interface AddressRequest {
+  street: string;
+  city: string;
+  state: string;
+  country: string;
+  zipCode: string;
+  isDefault?: boolean;
+}
+
+export interface ApiResponse<T> {
+  message: string;
+  data: T;
+}
