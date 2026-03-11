@@ -11,7 +11,7 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
-import { Address, AddressRequest } from "../types";
+import { Address } from "../types";
 import { useAddAddress, useUpdateAddress } from "../hooks/use-addresses";
 
 const addressSchema = z.object({
@@ -49,7 +49,7 @@ export const AddressModal = ({
       street: "",
       city: "",
       state: "",
-      country: "",
+      country: "INDIA",
       zipCode: "",
     },
   });
@@ -69,7 +69,7 @@ export const AddressModal = ({
           street: "",
           city: "",
           state: "",
-          country: "",
+          country: "INDIA",
           zipCode: "",
         });
       }
@@ -162,13 +162,14 @@ export const AddressModal = ({
               )}
             </div>
 
-            <div className="flex flex-col gap-2">
+            <div className="flex flex-col gap-2" aria-readonly>
               <label className="text-[10px] uppercase tracking-[0.2em] font-bold text-slate-900/40 dark:text-slate-100/40">
                 Country
               </label>
               <input
                 {...register("country")}
                 className="border-0 border-b border-slate-900/20 dark:border-slate-100/20 bg-transparent px-0 py-2 focus:ring-0 focus:border-primary text-slate-900 dark:text-slate-100 font-medium transition-colors outline-hidden"
+                readOnly
               />
               {errors.country && (
                 <p className="text-red-500 text-xs">{errors.country.message}</p>

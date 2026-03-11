@@ -36,10 +36,20 @@ export const useAddAddress = () => {
       queryClient.invalidateQueries({ queryKey: ["user-addresses"] });
     },
 
-    onError: (error: AxiosError<ApiResponse<null>>) => {
+    onError: (
+      error: AxiosError<ApiResponse<{ errors?: { field: string; message: string }[] }>>,
+    ) => {
+      let description = error.response?.data?.message || "Failed to add new address.";
+      const validationErrors = error.response?.data?.data?.errors;
+      
+      if (validationErrors && Array.isArray(validationErrors) && validationErrors.length > 0) {
+        description = validationErrors
+          .map((err) => `${err.field}: ${err.message}`)
+          .join(", ");
+      }
+
       toast.error("Failed to Add Address", {
-        description:
-          error.response?.data?.message || "Failed to add new address.",
+        description,
       });
     },
   });
@@ -70,10 +80,20 @@ export const useUpdateAddress = () => {
       queryClient.invalidateQueries({ queryKey: ["user-addresses"] });
     },
 
-    onError: (error: AxiosError<ApiResponse<null>>) => {
+    onError: (
+      error: AxiosError<ApiResponse<{ errors?: { field: string; message: string }[] }>>,
+    ) => {
+      let description = error.response?.data?.message || "Failed to update address.";
+      const validationErrors = error.response?.data?.data?.errors;
+      
+      if (validationErrors && Array.isArray(validationErrors) && validationErrors.length > 0) {
+        description = validationErrors
+          .map((err) => `${err.field}: ${err.message}`)
+          .join(", ");
+      }
+
       toast.error("Update Failed", {
-        description:
-          error.response?.data?.message || "Failed to update address.",
+        description,
       });
     },
   });

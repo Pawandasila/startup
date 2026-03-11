@@ -31,7 +31,7 @@ export interface UpdateProfileRequest {
   firstName?: string;
   lastName?: string;
   phoneNumber?: string;
-  profileImageUrl?: string;
+  profileImage?: File | null;
 }
 
 export interface ChangePasswordRequest {

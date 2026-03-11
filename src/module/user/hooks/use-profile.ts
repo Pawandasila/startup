@@ -27,9 +27,28 @@ export const useUpdateProfile = () => {
 
   return useMutation({
     mutationFn: async (profileData: UpdateProfileRequest) => {
+      let payload: UpdateProfileRequest | FormData = profileData;
+      let headers = {};
+
+      if (profileData.profileImage) {
+        const formData = new FormData();
+        if (profileData.firstName)
+          formData.append("firstName", profileData.firstName);
+        if (profileData.lastName)
+          formData.append("lastName", profileData.lastName);
+        if (profileData.phoneNumber)
+          formData.append("phoneNumber", profileData.phoneNumber);
+
+        formData.append("profileImage", profileData.profileImage);
+
+        payload = formData;
+        headers = { "Content-Type": "multipart/form-data" };
+      }
+
       const { data } = await axios.patch<ApiResponse<User>>(
         "/user/profile",
-        profileData,
+        payload,
+        { headers },
       );
       return data.data;
     },
@@ -41,10 +60,27 @@ export const useUpdateProfile = () => {
       queryClient.invalidateQueries({ queryKey: ["auth-user"] });
     },
 
-    onError: (error: AxiosError<ApiResponse<null>>) => {
+    onError: (
+      error: AxiosError<
+        ApiResponse<{ errors?: { field: string; message: string }[] }>
+      >,
+    ) => {
+      let description =
+        error.response?.data?.message || "Failed to update profile.";
+      const validationErrors = error.response?.data?.data?.errors;
+
+      if (
+        validationErrors &&
+        Array.isArray(validationErrors) &&
+        validationErrors.length > 0
+      ) {
+        description = validationErrors
+          .map((err) => `${err.field}: ${err.message}`)
+          .join(", ");
+      }
+
       toast.error("Update Failed", {
-        description:
-          error.response?.data?.message || "Failed to update profile.",
+        description,
       });
     },
   });

@@ -1,10 +1,10 @@
 "use client";
 
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
-import { Camera } from "lucide-react";
+import { Camera, Loader2 } from "lucide-react";
 import Image from "next/image";
 
 import { useProfile, useUpdateProfile } from "../hooks/use-profile";
@@ -21,6 +21,8 @@ type ProfileFormValues = z.infer<typeof profileSchema>;
 export const ProfileDetailsForm = () => {
   const { data: user, isLoading } = useProfile();
   const updateProfile = useUpdateProfile();
+  const [selectedImage, setSelectedImage] = useState<File | null>(null);
+  const [previewUrl, setPreviewUrl] = useState<string | null>(null);
 
   const {
     register,
@@ -46,8 +48,24 @@ export const ProfileDetailsForm = () => {
     }
   }, [user, reset]);
 
+  const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files && e.target.files[0]) {
+      const file = e.target.files[0];
+      setSelectedImage(file);
+      setPreviewUrl(URL.createObjectURL(file));
+    }
+  };
+
   const onSubmit = (data: ProfileFormValues) => {
-    updateProfile.mutate(data);
+    updateProfile.mutate(
+      { ...data, profileImage: selectedImage },
+      {
+        onSuccess: () => {
+          setSelectedImage(null);
+          setPreviewUrl(null);
+        },
+      },
+    );
   };
 
   if (isLoading) {
@@ -67,12 +85,12 @@ export const ProfileDetailsForm = () => {
       <div className="flex flex-col md:flex-row gap-12 items-start">
         <div className="relative">
           <div className="w-40 h-52 bg-slate-100 dark:bg-slate-900/50 border border-slate-900/10 dark:border-slate-100/10 overflow-hidden relative group">
-            {user?.profileImageUrl ? (
+            {previewUrl || user?.profileImageUrl ? (
               <Image
-                src={user.profileImageUrl}
+                src={previewUrl || user?.profileImageUrl || ""}
                 alt="Profile photo"
                 fill
-                className="object-cover grayscale"
+                className="object-cover"
               />
             ) : (
               <div className="w-full h-full flex flex-col items-center justify-center">
@@ -82,12 +100,18 @@ export const ProfileDetailsForm = () => {
               </div>
             )}
 
-            <button className="absolute bottom-0 right-0 bg-slate-900 dark:bg-slate-100 p-3.5 flex items-center justify-center shadow-lg transition-colors hover:bg-white group/cam">
+            <label className="absolute bottom-0 right-0 bg-slate-900 dark:bg-slate-100 p-3.5 flex items-center justify-center shadow-lg transition-colors hover:bg-white group/cam cursor-pointer z-10">
               <Camera
-                className="h-5 w-5 text-white dark:text-slate-900 group-hover:text-slate-900  transition-colors"
+                className="h-5 w-5 text-white dark:text-slate-900 hover:text-slate-900  transition-colors"
                 strokeWidth={1.5}
               />
-            </button>
+              <input
+                type="file"
+                className="hidden"
+                accept="image/png, image/jpeg, image/webp"
+                onChange={handleImageChange}
+              />
+            </label>
           </div>
         </div>
 
@@ -153,9 +177,12 @@ export const ProfileDetailsForm = () => {
           <div className="md:col-span-2 flex justify-end mt-4">
             <Button
               type="submit"
-              disabled={!isDirty || updateProfile.isPending}
-              className="bg-slate-900 dark:bg-slate-100 text-white dark:text-slate-900 px-10 py-6 uppercase text-xs tracking-[0.2em] font-bold border border-slate-900 dark:border-slate-100 hover:bg-transparent hover:text-slate-900 dark:hover:text-slate-100 transition-all rounded-none"
+              disabled={(!isDirty && !selectedImage) || updateProfile.isPending}
+              className="bg-slate-900 dark:bg-slate-100 text-white dark:text-slate-900 px-10 py-6 uppercase text-xs tracking-[0.2em] font-bold border border-slate-900 dark:border-slate-100 hover:bg-transparent hover:text-slate-900 dark:hover:text-slate-100 transition-all rounded-none flex items-center gap-2"
             >
+              {updateProfile.isPending && (
+                <Loader2 className="h-4 w-4 animate-spin" />
+              )}
               {updateProfile.isPending ? "Saving..." : "Save Changes"}
             </Button>
           </div>
